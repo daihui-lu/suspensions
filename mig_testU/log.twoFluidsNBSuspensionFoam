@@ -1,0 +1,350 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  7
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 7-1ff648926f77
+Exec   : twoFluidsNBSuspensionFoam
+Date   : Jul 27 2020
+Time   : 12:34:57
+Host   : "donatello.ecn.purdue.edu"
+PID    : 43397
+I/O    : uncollated
+Case   : /home/donatello/a/lu565/suspensions/mig_testU
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+
+PIMPLE: Convergence criteria found
+        p_rgh: tolerance 1e-05
+        "U.*": tolerance 1e-05
+
+
+PIMPLE: No corrector convergence criteria found
+        Calculations will do 2 corrections
+
+
+PIMPLE: Operating solver in transient mode with 2 outer correctors
+
+
+
+Reading g
+
+Reading hRef
+Creating twoPhaseSystem
+
+Selecting thermodynamics package 
+{
+    type            heRhoThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          hConst;
+    equationOfState rhoConst;
+    specie          specie;
+    energy          sensibleInternalEnergy;
+}
+
+Using #calcEntry at line 23 in file "/home/donatello/a/lu565/suspensions/mig_testU/0/U.particles"
+Using #codeStream with "/home/donatello/a/lu565/suspensions/mig_testU/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_f91942cdffd319907e6e4e53c4288db54dbf7768.so"
+Creating new library in "dynamicCode/_f91942cdffd319907e6e4e53c4288db54dbf7768/platforms/linux64GccDPInt32Opt/lib/libcodeStream_f91942cdffd319907e6e4e53c4288db54dbf7768.so"
+Invoking "wmake -s libso /home/donatello/a/lu565/suspensions/mig_testU/dynamicCode/_f91942cdffd319907e6e4e53c4288db54dbf7768"
+wmake libso /home/donatello/a/lu565/suspensions/mig_testU/dynamicCode/_f91942cdffd319907e6e4e53c4288db54dbf7768
+    ln: ./lnInclude
+    wmkdep: codeStreamTemplate.C
+    Ctoo: codeStreamTemplate.C
+    ld: /home/donatello/a/lu565/suspensions/mig_testU/dynamicCode/_f91942cdffd319907e6e4e53c4288db54dbf7768/../platforms/linux64GccDPInt32Opt/lib/libcodeStream_f91942cdffd319907e6e4e53c4288db54dbf7768.so
+Calculating face flux field phi.particles
+Selecting diameterModel for phase particles: constant
+Using #calcEntry at line 65 in file "/home/donatello/a/lu565/suspensions/mig_testU/constant/turbulenceProperties.particles.RAS.kineticTheoryCoeffs.uniformConstantCoeffs"
+Using #codeStream with "/home/donatello/a/lu565/suspensions/mig_testU/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_3d5c65a7978d68026e32631dc3da3f7be19af9f5.so"
+Creating new library in "dynamicCode/_3d5c65a7978d68026e32631dc3da3f7be19af9f5/platforms/linux64GccDPInt32Opt/lib/libcodeStream_3d5c65a7978d68026e32631dc3da3f7be19af9f5.so"
+Invoking "wmake -s libso /home/donatello/a/lu565/suspensions/mig_testU/dynamicCode/_3d5c65a7978d68026e32631dc3da3f7be19af9f5"
+wmake libso /home/donatello/a/lu565/suspensions/mig_testU/dynamicCode/_3d5c65a7978d68026e32631dc3da3f7be19af9f5
+    ln: ./lnInclude
+    wmkdep: codeStreamTemplate.C
+    Ctoo: codeStreamTemplate.C
+    ld: /home/donatello/a/lu565/suspensions/mig_testU/dynamicCode/_3d5c65a7978d68026e32631dc3da3f7be19af9f5/../platforms/linux64GccDPInt32Opt/lib/libcodeStream_3d5c65a7978d68026e32631dc3da3f7be19af9f5.so
+Selecting turbulence model type RAS
+Using #calcEntry at line 65 in file "/home/donatello/a/lu565/suspensions/mig_testU/constant/turbulenceProperties.particles.RAS.kineticTheoryCoeffs.uniformConstantCoeffs"
+Selecting RAS turbulence model kineticTheory
+Using #calcEntry at line 65 in file "/home/donatello/a/lu565/suspensions/mig_testU/constant/turbulenceProperties.particles.RAS.kineticTheoryCoeffs.uniformConstantCoeffs"
+Selecting viscosityModel Gidaspow
+Selecting conductivityModel Gidaspow
+Selecting radialModel SinclairJackson
+Selecting granularPressureModel Lun
+Selecting frictionalStressModel JohnsonJackson
+Selecting suspensionStressModel DLL
+Selecting nonLocalShearRateModel linearChannel
+kineticTheoryCoeffs
+{
+    equilibrium     off;
+    e               0.8;
+    alphaMax        0.68;
+    alphaMinFriction 0.68;
+    residualAlpha   0.0001;
+    viscosityModel  Gidaspow;
+    conductivityModel Gidaspow;
+    granularPressureModel Lun;
+    frictionalStressModel JohnsonJackson;
+    radialModel     SinclairJackson;
+    suspensionStressModel DLL;
+    nonLocalShearRateModel linearChannel;
+    BoyerCoeffs
+    {
+        mu1             0.32;
+        mu2             0.37;
+        I0              0.005;
+        lambdaAnisotropic ( 1 0.8 0.5 );
+    }
+    DLLCoeffs
+    {
+        a               0;
+        b               2.5;
+        c               0.1;
+        KN              0.75;
+        fixedLambdas    yes;
+    }
+    uniformConstantCoeffs
+    {
+        value           0.448;
+        suspensionShear off;
+    }
+    kineticShearRateCoeffs
+    {
+    }
+    linearChannelCoeffs
+    {
+        channelHeight   0.0018;
+        suspensionShear off;
+    }
+    GaoCoeffs
+    {
+        beta            -2.91;
+        suspensionShear off;
+        C               0.0176;
+        local           off;
+    }
+    particleDiffusionCoeffs
+    {
+        alpha           0.6;
+        b               1.05;
+        A               0.31;
+        Mus             0.26;
+        nSteps          5;
+    }
+    JohnsonJacksonCoeffs
+    {
+        Fr              0.05;
+        eta             2;
+        p               5;
+        phi             28.5;
+        alphaDeltaMin   0.05;
+    }
+}
+
+Selecting thermodynamics package 
+{
+    type            heRhoThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          hConst;
+    equationOfState rhoConst;
+    specie          specie;
+    energy          sensibleInternalEnergy;
+}
+
+Calculating face flux field phi.fluid
+Selecting diameterModel for phase fluid: constant
+Selecting turbulence model type laminar
+Selecting laminar stress model Stokes
+Selecting default blending method: none
+Selecting dragModel for (particles in fluid): MorrisBoulay
+Selecting swarmCorrection for (particles in fluid): none
+Selecting virtualMassModel for (particles in fluid): constantCoefficient
+Selecting heatTransferModel for (particles in fluid): RanzMarshall
+Calculating field g.h
+
+Reading field p_rgh
+
+Creating field dpdt
+
+Creating field kinetic energy K
+
+No MRF models present
+
+Creating finite volume options from "system/fvOptions"
+
+No finite volume options present
+Courant Number mean: 0.0191784 max: 0.284266
+Max Ur Courant Number = 0
+--> FOAM Warning : 
+    From function bool Foam::functionObjectList::read()
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 682
+    Reading "/home/donatello/a/lu565/suspensions/mig_testU/system/controlDict" from line 18 to line 22
+    Entry start is not a dictionary
+--> FOAM Warning : 
+    From function bool Foam::functionObjectList::read()
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 682
+    Reading "/home/donatello/a/lu565/suspensions/mig_testU/system/controlDict" from line 18 to line 22
+    Entry end is not a dictionary
+--> FOAM Warning : 
+    From function bool Foam::functionObjectList::read()
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 682
+    Reading "/home/donatello/a/lu565/suspensions/mig_testU/system/controlDict" from line 18 to line 22
+    Entry fields is not a dictionary
+--> FOAM Warning : 
+    From function bool Foam::functionObjectList::read()
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 682
+    Reading "/home/donatello/a/lu565/suspensions/mig_testU/system/controlDict" from line 18 to line 22
+    Entry interpolationScheme is not a dictionary
+--> FOAM Warning : 
+    From function bool Foam::functionObjectList::read()
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 682
+    Reading "/home/donatello/a/lu565/suspensions/mig_testU/system/controlDict" from line 18 to line 22
+    Entry setFormat is not a dictionary
+--> FOAM Warning : 
+    From function bool Foam::functionObjectList::read()
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 746
+    Caught FatalError 
+--> FOAM FATAL ERROR: 
+Unknown function type lineUniform
+
+Valid functions are : 
+
+6
+(
+patchProbes
+probes
+psiReactionThermoMoleFractions
+rhoReactionThermoMoleFractions
+sets
+surfaces
+)
+
+
+
+    From function static Foam::autoPtr<Foam::functionObject> Foam::functionObject::New(const Foam::word&, const Foam::Time&, const Foam::dictionary&)
+    in file db/functionObjects/functionObject/functionObject.C at line 100.
+
+--> FOAM Warning : 
+    From function bool Foam::functionObjectList::read()
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 682
+    Reading "/home/donatello/a/lu565/suspensions/mig_testU/system/controlDict" from line 18 to line 22
+    Entry type is not a dictionary
+--> FOAM Warning : 
+    From function bool Foam::functionObjectList::read()
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 682
+    Reading "/home/donatello/a/lu565/suspensions/mig_testU/system/controlDict" from line 18 to line 22
+    Entry writeControl is not a dictionary
+--> FOAM Warning : 
+    From function bool Foam::functionObjectList::read()
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 682
+    Reading "/home/donatello/a/lu565/suspensions/mig_testU/system/controlDict" from line 18 to line 22
+    Entry sets is not a dictionary
+Calculating field DDtU1 and DDtU2
+
+
+Starting time loop
+
+--> FOAM Warning : 
+    From function bool Foam::functionObjectList::read()
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 682
+    Reading "/home/donatello/a/lu565/suspensions/mig_testU/system/controlDict" from line 18 to line 22
+    Entry start is not a dictionary
+--> FOAM Warning : 
+    From function bool Foam::functionObjectList::read()
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 682
+    Reading "/home/donatello/a/lu565/suspensions/mig_testU/system/controlDict" from line 18 to line 22
+    Entry end is not a dictionary
+--> FOAM Warning : 
+    From function bool Foam::functionObjectList::read()
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 682
+    Reading "/home/donatello/a/lu565/suspensions/mig_testU/system/controlDict" from line 18 to line 22
+    Entry fields is not a dictionary
+--> FOAM Warning : 
+    From function bool Foam::functionObjectList::read()
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 682
+    Reading "/home/donatello/a/lu565/suspensions/mig_testU/system/controlDict" from line 18 to line 22
+    Entry interpolationScheme is not a dictionary
+--> FOAM Warning : 
+    From function bool Foam::functionObjectList::read()
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 682
+    Reading "/home/donatello/a/lu565/suspensions/mig_testU/system/controlDict" from line 18 to line 22
+    Entry setFormat is not a dictionary
+--> FOAM Warning : 
+    From function bool Foam::functionObjectList::read()
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 746
+    Caught FatalError 
+--> FOAM FATAL ERROR: 
+Unknown function type lineUniform
+
+Valid functions are : 
+
+6
+(
+patchProbes
+probes
+psiReactionThermoMoleFractions
+rhoReactionThermoMoleFractions
+sets
+surfaces
+)
+
+
+
+    From function static Foam::autoPtr<Foam::functionObject> Foam::functionObject::New(const Foam::word&, const Foam::Time&, const Foam::dictionary&)
+    in file db/functionObjects/functionObject/functionObject.C at line 100.
+
+--> FOAM Warning : 
+    From function bool Foam::functionObjectList::read()
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 682
+    Reading "/home/donatello/a/lu565/suspensions/mig_testU/system/controlDict" from line 18 to line 22
+    Entry type is not a dictionary
+--> FOAM Warning : 
+    From function bool Foam::functionObjectList::read()
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 682
+    Reading "/home/donatello/a/lu565/suspensions/mig_testU/system/controlDict" from line 18 to line 22
+    Entry writeControl is not a dictionary
+--> FOAM Warning : 
+    From function bool Foam::functionObjectList::read()
+    in file db/functionObjects/functionObjectList/functionObjectList.C at line 682
+    Reading "/home/donatello/a/lu565/suspensions/mig_testU/system/controlDict" from line 18 to line 22
+    Entry sets is not a dictionary
+Courant Number mean: 0.0191784 max: 0.284266
+Max Ur Courant Number = 0
+deltaT = 0.00119904
+Time = 0.00119904
+
+PIMPLE: Iteration 1
+MULES: Solving for alpha.particles
+MULES: Solving for alpha.particles
+MULES: Solving for alpha.particles
+MULES: Solving for alpha.particles
+alpha.particles volume fraction = 0.01  Min(alpha.particles) = -0.219642  Max(alpha.particles) = 0.220515
+MULES: Solving for alpha.particles
+MULES: Solving for alpha.particles
+MULES: Solving for alpha.particles
+MULES: Solving for alpha.particles
+alpha.particles volume fraction = 0.0106048  Min(alpha.particles) = 0.00752732  Max(alpha.particles) = 4.68661
+Constructing face momentum equations
+Constructing face momentum equations
+#0  Foam::error::printStack(Foam::Ostream&) at ??:?
+#1  Foam::sigFpe::sigHandler(int) at ??:?
+#2  ? in "/lib/x86_64-linux-gnu/libc.so.6"
+#3  Foam::divide(Foam::Field<double>&, double const&, Foam::UList<double> const&) at ??:?
+#4  Foam::tmp<Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh> > Foam::operator/<Foam::fvPatchField, Foam::volMesh>(Foam::dimensioned<double> const&, Foam::tmp<Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh> > const&) in "/home/donatello/a/lu565/OpenFOAM/lu565-7/platforms/linux64GccDPInt32Opt/bin/twoFluidsNBSuspensionFoam"
+#5  Foam::kineticTheoryModels::radialModels::SinclairJackson::g0prime(Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh> const&, Foam::dimensioned<double> const&, Foam::dimensioned<double> const&) const at ??:?
+#6  Foam::RASModels::kineticTheoryModel::pPrime() const at ??:?
+#7  ? in "/home/donatello/a/lu565/OpenFOAM/lu565-7/platforms/linux64GccDPInt32Opt/bin/twoFluidsNBSuspensionFoam"
+#8  __libc_start_main in "/lib/x86_64-linux-gnu/libc.so.6"
+#9  ? in "/home/donatello/a/lu565/OpenFOAM/lu565-7/platforms/linux64GccDPInt32Opt/bin/twoFluidsNBSuspensionFoam"
+Floating point exception (core dumped)

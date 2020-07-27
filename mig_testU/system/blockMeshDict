@@ -1,0 +1,107 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.3.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+convertToMeters 0.000001;
+
+R   37.5;
+r  -37.5;
+a   #calc "$R*0.707";
+A   #calc "-$a";
+// R0  0;
+// theta #calc "1.0/180*3.14";
+
+
+vertices
+(
+
+    ($R 0 0) //0
+    (0 $R 0) //1
+    ($r 0 0)  //2
+    (0 $r 0) //3
+
+    ($R 0 1000) //4
+    (0 $R 1000) //5
+    ($r 0 1000) //6
+    (0 $r 1000) //7
+
+
+    (0 0 0) //8
+    (0 0 100) //9
+
+);
+
+blocks
+(
+    hex (0 1 8 8 4 5 9 9) (25 25 100) simpleGrading (1 1 1)
+    hex (1 2 8 8 5 6 9 9) (25 25 100) simpleGrading (1 1 1)
+    hex (2 3 8 8 6 7 9 9) (25 25 100) simpleGrading (1 1 1)
+    hex (3 0 8 8 7 4 9 9) (25 25 100) simpleGrading (1 1 1)
+);
+
+edges
+(
+    arc 0 1 ($a $a 0) // (cx + rcos45, cy+rsin45 0) bottom arc
+    arc 1 2 ($A $a 0)
+    arc 2 3 ($A $A 0)
+    arc 3 0 ($a $A 0)
+
+    arc 4 5 ($a $a 1000)
+    arc 5 6 ($A $a 1000)
+    arc 6 7 ($A $A 1000)
+    arc 7 4 ($a $A 1000)
+);
+
+boundary
+(
+   inlet
+   {
+       type patch;
+       faces
+       (
+          (0 8 8 1)
+          (1 8 8 2)
+          (2 8 8 3)
+          (3 8 8 0)
+       );
+   }
+   outlet
+   {
+       type patch;
+       faces
+       (
+          (5 9 9 4)
+          (6 9 9 5)
+          (7 9 9 6)
+          (4 9 9 7)
+       );
+   }
+   walls
+   {
+       type patch;
+       faces
+       (
+          (0 1 5 4)
+          (1 2 6 5)
+          (2 3 7 6)
+          (3 0 4 7)
+       );
+   }
+);
+mergePatchPairs
+(
+);
+
+// ************************************************************************* //
