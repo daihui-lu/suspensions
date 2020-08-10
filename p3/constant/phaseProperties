@@ -22,7 +22,7 @@ particles
     diameterModel constant;
     constantCoeffs
     {
-        d               3e-06;
+        d               0.69e-06;
     }
 
     alphaMax        0.68;

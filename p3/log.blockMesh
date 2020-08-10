@@ -1,0 +1,101 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  7
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 7-1ff648926f77
+Exec   : blockMesh
+Date   : Aug 10 2020
+Time   : 12:58:11
+Host   : "donatello.ecn.purdue.edu"
+PID    : 18235
+I/O    : uncollated
+Case   : /home/donatello/a/lu565/suspensions/mig_testU
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Creating block mesh from
+    "/home/donatello/a/lu565/suspensions/mig_testU/system/blockMeshDict"
+Using #calcEntry at line 21 in file "/home/donatello/a/lu565/suspensions/mig_testU/system/blockMeshDict"
+Using #codeStream with "/home/donatello/a/lu565/suspensions/mig_testU/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_9098d8872f43a7a296efbf239c3c639e02c74fd1.so"
+Creating new library in "dynamicCode/_9098d8872f43a7a296efbf239c3c639e02c74fd1/platforms/linux64GccDPInt32Opt/lib/libcodeStream_9098d8872f43a7a296efbf239c3c639e02c74fd1.so"
+Invoking "wmake -s libso /home/donatello/a/lu565/suspensions/mig_testU/dynamicCode/_9098d8872f43a7a296efbf239c3c639e02c74fd1"
+wmake libso /home/donatello/a/lu565/suspensions/mig_testU/dynamicCode/_9098d8872f43a7a296efbf239c3c639e02c74fd1
+    ln: ./lnInclude
+    wmkdep: codeStreamTemplate.C
+    Ctoo: codeStreamTemplate.C
+    ld: /home/donatello/a/lu565/suspensions/mig_testU/dynamicCode/_9098d8872f43a7a296efbf239c3c639e02c74fd1/../platforms/linux64GccDPInt32Opt/lib/libcodeStream_9098d8872f43a7a296efbf239c3c639e02c74fd1.so
+Using #calcEntry at line 22 in file "/home/donatello/a/lu565/suspensions/mig_testU/system/blockMeshDict"
+Using #codeStream with "/home/donatello/a/lu565/suspensions/mig_testU/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_b9413865c3cf27daa296236da006a7f3b678b5a9.so"
+Creating new library in "dynamicCode/_b9413865c3cf27daa296236da006a7f3b678b5a9/platforms/linux64GccDPInt32Opt/lib/libcodeStream_b9413865c3cf27daa296236da006a7f3b678b5a9.so"
+Invoking "wmake -s libso /home/donatello/a/lu565/suspensions/mig_testU/dynamicCode/_b9413865c3cf27daa296236da006a7f3b678b5a9"
+wmake libso /home/donatello/a/lu565/suspensions/mig_testU/dynamicCode/_b9413865c3cf27daa296236da006a7f3b678b5a9
+    ln: ./lnInclude
+    wmkdep: codeStreamTemplate.C
+    Ctoo: codeStreamTemplate.C
+    ld: /home/donatello/a/lu565/suspensions/mig_testU/dynamicCode/_b9413865c3cf27daa296236da006a7f3b678b5a9/../platforms/linux64GccDPInt32Opt/lib/libcodeStream_b9413865c3cf27daa296236da006a7f3b678b5a9.so
+Creating block edges
+No non-planar block faces defined
+Creating topology blocks
+Creating topology patches
+
+Creating block mesh topology
+
+Check topology
+
+	Basic statistics
+		Number of internal faces : 6
+		Number of boundary faces : 12
+		Number of defined boundary faces : 12
+		Number of undefined boundary faces : 0
+	Checking patch -> block consistency
+
+Creating block offsets
+Creating merge list .
+
+Creating polyMesh from blockMesh
+Creating patches
+Creating cells
+Creating points with scale 1e-06
+    Block 0 cell size :
+        i : 2.35557e-06 .. 2.35557e-06 2.26135e-06 .. 2.26135e-06 2.35557e-06 .. 2.35557e-06 2.26135e-06 .. 2.26135e-06 
+        j : 1.5e-06 .. 1.5e-06 1.49997e-06 .. 1.49997e-06 1.5e-06 .. 1.5e-06 1.49997e-06 .. 1.49997e-06 
+        k : 1e-05
+    Block 1 cell size :
+        i : 2.35557e-06 .. 2.35557e-06 2.26135e-06 .. 2.26135e-06 2.35557e-06 .. 2.35557e-06 2.26135e-06 .. 2.26135e-06 
+        j : 1.5e-06 .. 1.5e-06 1.49997e-06 .. 1.49997e-06 1.5e-06 .. 1.5e-06 1.49997e-06 .. 1.49997e-06 
+        k : 1e-05
+    Block 2 cell size :
+        i : 2.35557e-06 .. 2.35557e-06 2.26135e-06 .. 2.26135e-06 2.35557e-06 .. 2.35557e-06 2.26135e-06 .. 2.26135e-06 
+        j : 1.5e-06 .. 1.5e-06 1.49997e-06 .. 1.49997e-06 1.5e-06 .. 1.5e-06 1.49997e-06 .. 1.49997e-06 
+        k : 1e-05
+    Block 3 cell size :
+        i : 2.35557e-06 .. 2.35557e-06 2.26135e-06 .. 2.26135e-06 2.35557e-06 .. 2.35557e-06 2.26135e-06 .. 2.26135e-06 
+        j : 1.5e-06 .. 1.5e-06 1.49997e-06 .. 1.49997e-06 1.5e-06 .. 1.5e-06 1.49997e-06 .. 1.49997e-06 
+        k : 1e-05
+
+Writing polyMesh
+----------------
+Mesh Information
+----------------
+  boundingBox: (-3.75e-05 -3.75e-05 0) (3.75e-05 3.75e-05 0.001)
+  nPoints: 252601
+  nCells: 250000
+  nFaces: 752500
+  nInternalFaces: 737500
+----------------
+Patches
+----------------
+  patch 0 (start: 737500 size: 2500) name: inlet
+  patch 1 (start: 740000 size: 2500) name: outlet
+  patch 2 (start: 742500 size: 10000) name: walls
+
+End
+
