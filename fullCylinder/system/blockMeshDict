@@ -1,0 +1,150 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.3.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+convertToMeters 1e-06;
+radius	37.5; 
+Rout	#calc "$radius*0.707";
+rout	#calc "-$radius*0.707";
+Rin	#calc "$Rout*0.7";
+rin	#calc "$rout*0.7";
+
+L	1000;
+
+Ain	#calc "$Rin/0.88";
+ain	#calc "$rin/0.88";
+Aout	$radius;
+aout	#calc "-$radius";
+
+
+
+node_in		10;
+node_out	6;
+node_L		40;
+
+
+vertices
+( 
+
+    //Plane A: 
+
+    ($Rin $rin 0) // Vertex A0 = 0 
+    ($Rin $Rin 0) // Vertex A1 = 1 
+    ($rin $Rin 0) // Vertex A2 = 2 
+    ($rin $rin 0) // Vertex A3 = 3 
+    ($Rout $rout 0) // Vertex A4 = 4 
+    ($Rout $Rout 0) // Vertex A5 = 5 
+    ($rout $Rout 0) // Vertex A6 = 6 
+    ($rout $rout 0) // Vertex A7 = 7 
+
+    //Plane B:
+ 
+    ($Rin $rin $L) // Vertex B0 = 8 
+    ($Rin $Rin $L) // Vertex B1 = 9 
+    ($rin $Rin $L) // Vertex B2 = 10 
+    ($rin $rin $L) // Vertex B3 = 11 
+    ($Rout $rout  $L) // Vertex B4 = 12 
+    ($Rout $Rout $L) // Vertex B5 = 13 
+    ($rout $Rout $L) // Vertex B6 = 14 
+    ($rout $rout $L) // Vertex B7 = 15 
+);
+
+// Defining blocks: 
+
+blocks 
+
+( 
+
+    //Blocks between plane A and plane B: 
+
+    // block0 - positive x O-grid block 
+    hex (5 1 0 4 13 9 8 12 ) AB ($node_out $node_in $node_L) simpleGrading (5 1 1) 
+
+    // block1 - positive y O-grid block 
+    hex (6 2 1 5 14 10 9 13 ) AB ($node_out $node_in $node_L) simpleGrading (5 1 1) 
+
+    // block2 - negative x O-grid block 
+    hex (7 3 2 6 15 11 10 14 ) AB ($node_out $node_in $node_L) simpleGrading (5 1 1) 
+
+    // block3 - negative y O-grid block
+    hex (4 0 3 7 12 8 11 15 ) AB ($node_out $node_in $node_L) simpleGrading (5 1 1) 
+
+    // block4 - central O-grid block 
+    hex (0 1 2 3 8 9 10 11 ) AB ($node_in $node_in $node_L) simpleGrading (1 1 1) 
+
+); 
+
+edges 
+( 
+
+    //Plane A: 
+    arc 0 1 ($Ain 0 0) 
+    arc 1 2 (0 $Ain 0) 
+    arc 2 3 ($ain 0 0) 
+    arc 3 0 (0 $ain 0) 
+    arc 4 5 ($Aout 0 0) 
+    arc 5 6 (0 $Aout 0) 
+    arc 6 7 ($aout 0 0) 
+    arc 7 4 (0 $aout 0) 
+
+    //Plane B: 
+    arc 8 9 ($Ain 0 $L) 
+    arc 9 10 (0 $Ain $L) 
+    arc 10 11 ($ain 0 $L) 
+    arc 11 8 (0 $ain $L) 
+    arc 12 13 ($Aout 0 $L) 
+    arc 13 14 (0 $Aout $L) 
+    arc 14 15 ($aout 0 $L) 
+    arc 15 12 (0 $aout $L) 
+
+); 
+
+// Defining patches: 
+
+patches 
+( 
+
+    patch inlet 
+   ( 
+	(1 5 4 0) 
+	(2 6 5 1)
+	(3 7 6 2)
+	(0 4 7 3)
+	(3 2 1 0) 
+    ) 
+
+    patch outlet 
+    ( 
+	(13 9 8 12) 
+	(14 10 9 13)
+	(15 11 10 14)
+	(12 8 11 15) 
+	(8 9 10 11)
+    ) 
+
+    wall wallDiffuser 
+    (
+	(4 5 13 12)
+	(5 6 14 13)
+	(6 7 15 14) 
+	(7 4 12 15)
+    )
+ );
+
+mergePatchPairs
+(
+);
+
+// ************************************************************************* //
